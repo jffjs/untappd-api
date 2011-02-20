@@ -1,0 +1,16 @@
+= untappd-api
+A simple Ruby wrapper for accessing the Untappd API.
+
+For more information, see http://untappd.com/api/dashboard.
+
+== Usage
+Each method returns a Hashie::Mash (an extended Hash that gives object-like access, see https://github.com/intridea/hashie) or an Array of Hashie::Mash.
+
+=== Example:
+  require 'untappd-api'
+
+  client = Untappd::Base.new("gambrinus", PASSWORD, API_KEY)
+  client.user.first_name  #=> "Jeff"
+  beer = client.beer_info(:bid => 17904) 
+  beer.name #=> "Third Coast Old Ale"
+  beer.brewery #=> "Bell's Brewery, Inc."
