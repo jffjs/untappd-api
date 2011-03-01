@@ -9,7 +9,7 @@ Each method returns a Hash representing the response.
 === Example:
   require 'untappd-api'
 
-  client = Untappd::Base.new(API_KEY)
+  client = Untappd::Base.new("YOUR_API_KEY")
   beer = client.beer_info(:bid => 17904)["results"]
   beer["name"] # => "Third Coast Old Ale"
   beer["brewery"] #=> "Bell's Brewery, Inc."
