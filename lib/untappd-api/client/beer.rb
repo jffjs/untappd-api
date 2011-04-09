@@ -4,17 +4,17 @@ module Untappd
       
       def beer_feed(id, options={})
         query = options.merge(:bid => id)
-        get('/beer_checkins', query)
+        API.get('/beer_checkins', query)
       end
 
       def beer(id)
         query = :bid => id
-        get('beer_info', query)
+        API.get('beer_info', query)
       end
 
       def beer_search(term, options={})
         query = options.merge(:q => term)
-        get('/beer_search', options)
+        API.get('/beer_search', query)
       end
     end
   end
