@@ -27,7 +27,7 @@ module Untappd
 
     # Override the setter provided by attr_accessor in order to MD5 hash the password
     def password=(val)
-      @password = Digest::MD5.hexdigest(val)
+      @password = Digest::MD5.hexdigest(val) unless val.nil?
     end
 
     # When this module is extended, set all configuration options to their default values.

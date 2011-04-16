@@ -13,7 +13,7 @@ module Untappd
       # @param id [String] The ID of the beer.
       def beer(id)
         options = { :bid => id }
-        get('beer_info', options)
+        get('/beer_info', options)
       end
 
       # @param query [String] The term that you want to search.
@@ -21,7 +21,7 @@ module Untappd
       # @option options [String] sort Alphabetical order ("name") or checkin count order ("count").
       def beer_search(query, options={})
         options.merge!(:q => term)
-        get('/beer_search', options)
+        get('/beer_search', :query => options)
       end
 
     end
