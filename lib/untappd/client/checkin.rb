@@ -14,7 +14,7 @@ module Untappd
       # @example Retrieve the public feed.
       #   Untappd.public_feed
       def public_feed(options={})
-        get('thepub', options)
+        get('/thepub', options)
       end
 
       # Alias for public_feed
@@ -30,7 +30,7 @@ module Untappd
       #   Untappd.beer(3839)
       def checkin_details(id)
         options = { :id => id }
-        get('details', options)
+        get('/details', options)
       end
 
       # Perform a checkin with the authenticated user.
@@ -53,7 +53,7 @@ module Untappd
       #   Untappd.checkin(-5, 6284)
       def checkin(gmt_offset, beer_id, options={})
         options.merge!(:gmt_offset => gmt_offset, :bid => beer_id)
-        post('checkin', options)
+        post('/checkin', options)
       end
       
       # Add a comment to a checkin.
@@ -67,7 +67,7 @@ module Untappd
       #   Untappd.add_comment(669114, "Nice.")
       def add_comment(checkin_id, comment)
         options.merge!(:checkin_id => checkin_id, :comment => comment)
-        post('add_comment', options)
+        post('/add_comment', options)
       end
 
       # Delete a comment made by the authenticated user.
@@ -80,7 +80,7 @@ module Untappd
       #   Untappd.delete_comment(669114)
       def delete_comment(comment_id)
         options.merge!(:comment_id => comment_id)
-        post('delete_comment', options)
+        post('/delete_comment', options)
       end
 
       # Toast a checkin.
@@ -93,7 +93,7 @@ module Untappd
       #   Untappd.toast(669114)
       def toast(checkin_id)
         options.merge!(:checkin_id => checkin_id)
-        post('toast', options)
+        post('/toast', options)
       end
 
       # Remove a toast made by the authenticated user from a checkin.
@@ -106,7 +106,7 @@ module Untappd
       #   Untappd.remove_toast(669114)
       def remove_toast(checkin_id)
         options.merge!(:checkin_id => checkin_id)
-        post('delete_toast', options)
+        post('/delete_toast', options)
       end
     end
   end

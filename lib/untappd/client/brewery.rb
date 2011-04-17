@@ -14,7 +14,7 @@ module Untappd
       #   Untappd.brewery_feed(399)
       def brewery_feed(id, options={})
         options.merge!(:brewery_id => id)
-        get('brewery_checkins', options)
+        get('/brewery_checkins', options)
       end
 
       # Returns info for the specified brewery.
@@ -27,7 +27,7 @@ module Untappd
       #   Untappd.brewery(399)
       def brewery(id)
         options = { :brewery_id => id }
-        get('brewery_info', options)
+        get('/brewery_info', options)
       end
 
       # Search breweries with the specified query.
@@ -41,7 +41,7 @@ module Untappd
       #   Untappd.brewery_search("Bell's")
       def brewery_search(query, options={})
         options.merge!(:q => term)
-        get('brewery_search', :query => options)
+        get('/brewery_search', :query => options)
       end
     end
   end
