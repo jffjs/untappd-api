@@ -6,12 +6,12 @@ module Untappd
       #
       # @format :json
       # @authenticated false unless :name option is omitted.
-      # @option options [String] :name The user whose feed you wish to request.  If not provided, the feed of the authenticated user will be returned.
+      # @option options [String] :user The user whose feed you wish to request.  If not provided, the feed of the authenticated user will be returned.
       # @option options [String, Integer] :since The ID of the last recent check-in.
       # @option options [String, Integer] :offset The offset you would like the dataset to begin with.
       # @return [Hashie::Mash] The requested user feed.
       # @example Retrieve the feed for user with username "gambrinus".
-      #   Untappd.user_feed(:name => "gambrinus")
+      #   Untappd.user_feed(:user => "gambrinus")
       def user_feed(options={})
         get('/user_feed', options)
       end

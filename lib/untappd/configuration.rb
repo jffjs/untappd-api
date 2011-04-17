@@ -8,7 +8,7 @@ module Untappd
           :application_key,
           :endpoint,
           :user_agent,
-          :user_name,
+          :username,
           :password
     ].freeze
 
@@ -18,7 +18,7 @@ module Untappd
 
     DEFAULT_USER_AGENT = "untappd-api Ruby Gem #{Untappd::VERSION}".freeze
 
-    DEFAULT_USER_NAME = nil.freeze
+    DEFAULT_USERNAME = nil.freeze
 
     DEFAULT_PASSWORD = nil.freeze
 
@@ -50,7 +50,7 @@ module Untappd
       self.application_key  = DEFAULT_APPLICATION_KEY
       self.endpoint         = DEFAULT_ENDPOINT
       self.user_agent       = DEFAULT_USER_AGENT
-      self.user_name        = DEFAULT_USER_NAME
+      self.username         = DEFAULT_USERNAME
       self.password         = DEFAULT_PASSWORD
     end
   end

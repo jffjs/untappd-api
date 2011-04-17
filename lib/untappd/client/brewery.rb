@@ -1,6 +1,6 @@
 module Untappd
   class Client
-    module Beer
+    module Brewery
 
       # Returns the feed for the specified brewery.
       #

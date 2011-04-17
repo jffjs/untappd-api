@@ -2,6 +2,7 @@ require 'untappd/error'
 require 'untappd/configuration'
 require 'untappd/api'
 require 'untappd/client'
+require 'untappd/version'
 
 # Adapted from Ruby Twitter gem by John Nunemaker
 #  @see https://github.com/jnunemaker/twitter
