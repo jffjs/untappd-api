@@ -14,7 +14,7 @@ module Untappd
       #   Untappd.beer_feed(399)
       def beer_feed(id, options={})
         options.merge!(:bid => id)
-        get('/beer_checkins', options)
+        get('beer_checkins', options)
       end
 
       # Returns info for the specified beer.
@@ -27,7 +27,7 @@ module Untappd
       #   Untappd.beer(3839)
       def beer(id)
         options = { :bid => id }
-        get('/beer_info', options)
+        get('beer_info', options)
       end
 
       # Search beers with the specified query.
@@ -41,7 +41,7 @@ module Untappd
       #   Untappd.beer_search("Pale ale")
       def beer_search(query, options={})
         options.merge!(:q => term)
-        get('/beer_search', options)
+        get('beer_search', options)
       end
 
       # Returns the currently trending beers.
@@ -57,7 +57,7 @@ module Untappd
       # @example Return all trending beers.
       #   Untappd.trending_beers
       def trending_beers(options={})
-        get('/trending', options)
+        get('trending', options)
       end
     end
   end

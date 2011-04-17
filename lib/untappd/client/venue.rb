@@ -14,7 +14,7 @@ module Untappd
       #   Untappd.venue_feed(399)
       def venue_feed(id, options={})
         options.merge!(:venue_id => id)
-        get('/venue_checkins', options)
+        get('venue_checkins', options)
       end
 
       # Returns info for the specified venue.
@@ -27,7 +27,7 @@ module Untappd
       #   Untappd.venue(12645)
       def venue(id)
         options = { :venue_id => id }
-        get('/venue_info', options)
+        get('venue_info', options)
       end
     end
   end
