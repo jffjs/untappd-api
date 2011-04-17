@@ -9,7 +9,7 @@ module Untappd
       # @param id [String, Integer] The ID of the beer.
       # @option options [String, Integer] :since The ID of the last recent check-in.
       # @option options [String, Integer] :offset The offset you would like the dataset to begin with.
-      # @return [Hashie::Mash] The requested beer feed.
+      # @return [Array] The requested beer feed.
       # @example Retrieve the feed for beer with ID 3839.
       #   Untappd.beer_feed(399)
       def beer_feed(id, options={})
@@ -36,11 +36,11 @@ module Untappd
       # @authenticated false
       # @option options [String, Integer] :offset The offset you would like the dataset to begin with.
       # @option options [String, Integer] :sort Alphabetical order ("name") or checkin count order ("count").
-      # @return [Hashie::Mash] The search results.
+      # @return [Array] The search results.
       # @example Search beers for "Pale ale".
       #   Untappd.beer_search("Pale ale")
       def beer_search(query, options={})
-        options.merge!(:q => term)
+        options.merge!(:q => query)
         get('/beer_search', options)
       end
 
@@ -53,7 +53,7 @@ module Untappd
       # @option options [String, Integer] :age "daily", "weekly", "monthly".
       # @option options [String, Integer] :geolat Latitude to filter results by. Required when :type => "local".
       # @option options [String, Integer] :geolng Longitude to filter results by. Required when :type => "local".
-      # @return [Hashie::Mash] The search results.
+      # @return [Array] The search results.
       # @example Return all trending beers.
       #   Untappd.trending_beers
       def trending_beers(options={})

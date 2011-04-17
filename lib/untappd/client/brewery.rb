@@ -9,7 +9,7 @@ module Untappd
       # @param id [String, Integer] The ID of the brewery.
       # @option options [String, Integer] :since The ID of the last recent check-in.
       # @option options [String, Integer] :offset The offset you would like the dataset to begin with.
-      # @return [Hashie::Mash] The requested brewery feed.
+      # @return [Array] The requested brewery feed.
       # @example Retrieve the feed for brewery with ID 399.
       #   Untappd.brewery_feed(399)
       def brewery_feed(id, options={})
@@ -36,12 +36,12 @@ module Untappd
       # @authenticated false
       # @param query [String] The term that you want to search.
       # @option options [String, Integer] :offset The offset you would like the dataset to begin with.
-      # @return [Hashie::Mash] The search results.
+      # @return [Array] The search results.
       # @example Search breweries for "Bell's".
       #   Untappd.brewery_search("Bell's")
       def brewery_search(query, options={})
-        options.merge!(:q => term)
-        get('/brewery_search', :query => options)
+        options.merge!(:q => query)
+        get('/brewery_search', options)
       end
     end
   end

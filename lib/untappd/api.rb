@@ -6,40 +6,47 @@ module Untappd
     include HTTParty
     attr_accessor *Configuration::VALID_OPTIONS_KEYS
 
-    # Override the password setter in order to MD5 hash the password
-    def password=(val)
-      @password = Digest::MD5.hexdigest(val) unless val.nil?
+    # Override these setters so that HTTParty class methods get updated as well
+    def endpoint=(val)
+      @endpoint = val
+      @klass.base_uri(endpoint)
+    end
+
+    def application_key=(val)
+      @application_key = val
+      @klass.default_params(:key => application_key)
     end
     
     # Create a new API
     def initialize(options={})
+      @klass = self.class
       options = Untappd.options.merge(options)
       Configuration::VALID_OPTIONS_KEYS.each do |key|
-        send("#{key}=", options[key])
+        send("#{key}=", options[key]) 
       end
 
       # Set HTTParty class configurations
-      klass = self.class
-      klass.base_uri(endpoint)
-      klass.default_params(:key => application_key)
-      klass.format(:json)
+      @klass.format(:json)
     end
 
     private
   
     # Wrap calls to the HTTParty get and post methods and return results as Hashie::Mash
     def get(path, options={})
-      Hashie::Mash.new(self.class.get(path, build_options(options)).parsed_response)
+      response = @klass.get(path, build_options(options)).parsed_response
+      Hashie::Mash.new(response).results
     end
 
     def post(path, options={})
-      Hashie::Mash.new(self.class.post(path, build_options(options)).parsed_response)
+      response = @klass.post(path, build_options(options)).parsed_response
+      Hashie::Mash.new(response).results
     end
 
     def build_options(options)
       options = { :query => options }
       if username && password
-        options.merge!(:basic_auth => { :username => username, :password => password })
+        options.merge!(:basic_auth => { :username => username, 
+                                        :password => Digest::MD5.hexdigest(password) })
       end
 
       return options

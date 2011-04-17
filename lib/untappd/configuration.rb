@@ -14,7 +14,7 @@ module Untappd
 
     DEFAULT_APPLICATION_KEY = nil.freeze
 
-    DEFAULT_ENDPOINT = "http://api.untappd.com/v3/".freeze
+    DEFAULT_ENDPOINT = "http://api.untappd.com/v3".freeze
 
     DEFAULT_USER_AGENT = "untappd-api Ruby Gem #{Untappd::VERSION}".freeze
 
@@ -24,11 +24,6 @@ module Untappd
 
     # @private
     attr_accessor(*VALID_OPTIONS_KEYS)
-
-    # Override the setter provided by attr_accessor in order to MD5 hash the password
-    def password=(val)
-      @password = Digest::MD5.hexdigest(val) unless val.nil?
-    end
 
     # When this module is extended, set all configuration options to their default values.
 		def self.extended(base)
