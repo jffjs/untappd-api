@@ -33,23 +33,22 @@ module Untappd
   
     # Wrap calls to the HTTParty get and post methods and return results as Hashie::Mash
     def get(path, options={})
-      response = @klass.get(path, build_options(options)).parsed_response
+      response = @klass.get(path, :query => options,
+                                  :basic_auth => auth).parsed_response
       Hashie::Mash.new(response).results
     end
 
     def post(path, options={})
-      response = @klass.post(path, build_options(options)).parsed_response
-      Hashie::Mash.new(response).results
+      response = @klass.post(path,  :body => options,
+                                    :basic_auth => auth).parsed_response
+      Hashie::Mash.new(response)
     end
 
-    def build_options(options)
-      options = { :query => options }
+    def auth
       if username && password
-        options.merge!(:basic_auth => { :username => username, 
-                                        :password => Digest::MD5.hexdigest(password) })
+        { :username => username, 
+          :password => Digest::MD5.hexdigest(password) }
       end
-
-      return options
     end
   end
 end

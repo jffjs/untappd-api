@@ -14,7 +14,7 @@ module Untappd
 
     DEFAULT_APPLICATION_KEY = nil.freeze
 
-    DEFAULT_ENDPOINT = "http://api.untappd.com/v3".freeze
+    DEFAULT_ENDPOINT = "api.untappd.com/v3".freeze
 
     DEFAULT_USER_AGENT = "untappd-api Ruby Gem #{Untappd::VERSION}".freeze
 

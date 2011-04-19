@@ -9,7 +9,7 @@ module Untappd
       # @param id [String, Integer] The ID of the venue.
       # @option options [String, Integer] :since The ID of the last recent check-in.
       # @option options [String, Integer] :offset The offset you would like the dataset to begin with.
-      # @return [Hashie::Mash] The requested venue feed.
+      # @return [Array] The requested venue feed.
       # @example Retrieve the feed for venue with ID 12645.
       #   Untappd.venue_feed(399)
       def venue_feed(id, options={})

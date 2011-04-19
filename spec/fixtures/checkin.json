@@ -1,0 +1,2 @@
+#<Net::HTTPOK:0x8e03bf4>
+{"result":"fail","http_code":500,"error":"Beer ID is missing, invalid or not numeric."}

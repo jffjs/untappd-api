@@ -18,8 +18,16 @@ def stub_get(path)
   stub_request(:get, Untappd.endpoint + path)
 end
 
+def stub_get_with_auth(path, user, pass)
+  stub_request(:get, "#{user}:#{pass}@" + Untappd.endpoint + path)
+end
+
 def stub_post(path)
   stub_request(:post, Untappd.endpoint + path)
+end
+
+def stub_post_with_auth(path, user, pass)
+  stub_request(:post, "#{user}:#{pass}@" + Untappd.endpoint + path)
 end
 
 def fixture_path

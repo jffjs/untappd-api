@@ -10,7 +10,7 @@ module Untappd
       # @option options [String, Integer] :offset The offset you would like the dataset to begin with.
       # @option options [String, Integer] :geolat Latitude to filter results by.
       # @option options [String, Integer] :geolng Longitude to filter results by.
-      # @return [Hashie::Mash] The requested beer feed.
+      # @return [Array] The requested beer feed.
       # @example Retrieve the public feed.
       #   Untappd.public_feed
       def public_feed(options={})
@@ -51,7 +51,7 @@ module Untappd
       # @return [Hashie::Mash] The results of the checkin. Includes info for beer, venue, badges earned, and recommendations.
       # @example Checkin to beer with ID 6284 from Eastern time zone (GMT - 5 hours).
       #   Untappd.checkin(-5, 6284)
-      def checkin(gmt_offset, beer_id, options={})
+      def checkin(beer_id, gmt_offset, options={})
         options.merge!(:gmt_offset => gmt_offset, :bid => beer_id)
         post('/checkin', options)
       end
@@ -66,7 +66,7 @@ module Untappd
       # @example Comment on checkin with ID 669114 and comment text of "Nice."
       #   Untappd.add_comment(669114, "Nice.")
       def add_comment(checkin_id, comment)
-        options.merge!(:checkin_id => checkin_id, :comment => comment)
+        options = { :checkin_id => checkin_id, :comment => comment }
         post('/add_comment', options)
       end
 
