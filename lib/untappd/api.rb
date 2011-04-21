@@ -40,7 +40,7 @@ module Untappd
 
     def post(path, options={})
       response = @klass.post(path,  :body => options,
-                                    :basic_auth => auth).parsed_response
+                                    :basic_auth => auth)
       Hashie::Mash.new(response)
     end
 

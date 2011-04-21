@@ -79,7 +79,7 @@ module Untappd
       # @example Delete comment with ID 669114.
       #   Untappd.delete_comment(669114)
       def delete_comment(comment_id)
-        options.merge!(:comment_id => comment_id)
+        options = { :comment_id => comment_id }
         post('/delete_comment', options)
       end
 
@@ -92,7 +92,7 @@ module Untappd
       # @example Toast checkin with ID 669114.
       #   Untappd.toast(669114)
       def toast(checkin_id)
-        options.merge!(:checkin_id => checkin_id)
+        options = { :checkin_id => checkin_id }
         post('/toast', options)
       end
 
@@ -104,8 +104,8 @@ module Untappd
       # @return [Hashie::Mash] The results of the toast removal.
       # @example Remove toast from checkin with ID 669114.
       #   Untappd.remove_toast(669114)
-      def remove_toast(checkin_id)
-        options.merge!(:checkin_id => checkin_id)
+      def untoast(checkin_id)
+        options = { :checkin_id => checkin_id }
         post('/delete_toast', options)
       end
     end

@@ -26,7 +26,7 @@ module Untappd
       # @example Retrieve the friend feed for the authenticated user.
       #   Untappd.friend_feed
       def friend_feed(options={})
-        get('/user_feed', options)
+        get('/feed', options)
       end
 
       # Returns the info for the requested user.
@@ -88,7 +88,7 @@ module Untappd
       # @example Retrieve the distinct beers of the user with username "gambrinus".
       #   Untappd.distinct_beers(:user => "gambrinus')
       def distinct_beers(options={})
-        get('/distinct_beers', options)
+        get('/user_distinct', options)
       end
     end
   end
