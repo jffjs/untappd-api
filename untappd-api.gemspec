@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency %q<rspec>, ['~> 2.0.0.beta.22']
+      s.add_development_dependency %q<rspec>, ['~> 2.9.0']
       s.add_development_dependency %q<webmock>, ['~> 1.6.2']
       s.add_dependency %q<httparty>, ['~> 0.7.4']
       s.add_dependency %q<hashie>, ['~> 1.0.0']
