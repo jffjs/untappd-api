@@ -35,12 +35,14 @@ module Untappd
     def get(path, options={})
       response = @klass.get(path, :query => options,
                                   :basic_auth => auth).parsed_response
+      handle_error(response)
       Hashie::Mash.new(response).results
     end
 
     def post(path, options={})
       response = @klass.post(path,  :body => options,
                                     :basic_auth => auth)
+      handle_error(response)
       Hashie::Mash.new(response)
     end
 
@@ -48,6 +50,29 @@ module Untappd
       if username && password
         { :username => username, 
           :password => Digest::MD5.hexdigest(password) }
+      end
+    end
+
+    def handle_error(response)
+      message = response['error']
+
+      case response['http_code']
+        when 400
+          raise BadRequest, message
+        when 401
+          raise Unauthorized, message
+        when 403
+          raise General, message
+        when 404
+          raise NotFound, message
+        when 500
+          raise InternalError, message
+        when 502
+          raise BadGateway, message
+        when 503
+          raise Unavailable, message
+        when 504
+          raise GatewayTimeout, message
       end
     end
   end

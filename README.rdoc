@@ -4,12 +4,22 @@ A simple Ruby wrapper for accessing the Untappd API.
 For more information, see http://untappd.com/api/dashboard.
 
 == Usage
-Each method returns a Hash representing the response.
+Each method returns a Hashie::Mash representing the response.
 
 === Example:
-  require 'untappd-api'
+  require 'untappd'
 
-  client = Untappd::Base.new("YOUR_API_KEY")
-  beer = client.beer_info(:bid => 17904)["results"]
-  beer["name"] # => "Third Coast Old Ale"
-  beer["brewery"] #=> "Bell's Brewery, Inc."
+  Untappd.configure do |config|
+    config.application_key = "YOUR_API_KEY")
+    config.username = "your_username"       # Some API calls require a signed in user
+    config.password = "your_password"       # Most API methods do not require a user
+  end
+
+  Untappd.beer(1234)
+  Untappd.user(user: 'gambrinus') # Returns the signed in user if no :user option passed
+
+  # You can change the signed in user after initial configuration
+  Untappd.username = "another_user"
+  Untappd.password = "that_guys_password"
+
+All methods are documented in the lib/untappd/client directory.
