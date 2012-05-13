@@ -1,8 +1,8 @@
-require 'untappd/error'
-require 'untappd/configuration'
-require 'untappd/api'
-require 'untappd/client'
-require 'untappd/version'
+require 'untappd-api/error'
+require 'untappd-api/configuration'
+require 'untappd-api/api'
+require 'untappd-api/client'
+require 'untappd-api/version'
 
 # Adapted from Ruby Twitter gem by John Nunemaker
 #  @see https://github.com/jnunemaker/twitter

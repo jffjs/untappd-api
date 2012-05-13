@@ -1,11 +1,11 @@
 module Untappd
   
   class Client < API
-    require 'untappd/client/beer'
-    require 'untappd/client/brewery'
-    require 'untappd/client/checkin'
-    require 'untappd/client/user'
-    require 'untappd/client/venue'
+    require 'untappd-api/client/beer'
+    require 'untappd-api/client/brewery'
+    require 'untappd-api/client/checkin'
+    require 'untappd-api/client/user'
+    require 'untappd-api/client/venue'
 
     include Untappd::Client::Beer
     include Untappd::Client::Brewery
