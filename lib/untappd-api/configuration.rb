@@ -16,7 +16,7 @@ module Untappd
 
     DEFAULT_ENDPOINT = "api.untappd.com/v3".freeze
 
-    DEFAULT_USER_AGENT = "untappd-api Ruby Gem #{Untappd::VERSION}".freeze
+    DEFAULT_USER_AGENT = "untappd-api Ruby Gem".freeze
 
     DEFAULT_USERNAME = nil.freeze
 
