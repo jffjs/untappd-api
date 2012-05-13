@@ -7,7 +7,7 @@ For more information, see http://untappd.com/api/dashboard.
 Each method returns a Hashie::Mash representing the response.
 
 === Example:
-  require 'untappd'
+  require 'untappd-api'
 
   Untappd.configure do |config|
     config.application_key = "YOUR_API_KEY")

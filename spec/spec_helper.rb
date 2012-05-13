@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'untappd'
+require 'untappd-api'
 require 'rspec'
 require 'webmock/rspec'
 RSpec.configure do |config|
